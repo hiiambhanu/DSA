@@ -6,7 +6,6 @@ void swap(int &a, int&b){
     temp = a;
     a = b;
     b = temp;
-
 }
 
 void lsearch(int a[], int size, int item){
@@ -42,7 +41,6 @@ void bsearch(int a[], int size, int item){
 
     cout<<"Item not found";
     return;
-    
 }
 
 void bsort(int a[], int size)
@@ -52,6 +50,45 @@ void bsort(int a[], int size)
             if(a[j]>a[j+1])   swap(a[j+1], a[j]);
         }
     }
+}
+
+void insert(int a[], int &size, int item){
+    int pos;
+    if(a[0]>item){
+        pos = 0;
+        for(int i=size-1;i>0;i--){
+            a[i]=a[i-1];
+        }
+        a[pos]= item;
+
+        size++;
+        return;
+        }
+    else if (a[size-1] < item )
+        {
+            pos = size;
+            size++;
+            a[pos] = item;
+            return;
+        }
+    
+    else {
+        cout<<"Im here  ";
+        for(int i = 0 ; i<size-1; i++){
+            if(a[i]<item && a[i+1]>item )
+                {
+                pos = i+1;
+                break;
+                }              
+        }
+    }
+    cout<<"pos is "<<pos<<"  ";
+    for(int i=size;i>pos;i--){
+        a[i]= a[i-1];
+    }
+    a[pos]  = item;
+    size++;
+    return;
 }
 
 void display(int a[], int size){
@@ -67,13 +104,12 @@ int main()
     for(int i = 0;i < size; i++)
         cin>>a[i];
     
-    cout<<"Enter the item to look for ";
+    cout<<"Enter the item to insert ";
     int item;
     cin>>item;
-    cout<<"bSearch "; 
-    bsearch(a, size, item);
-
+    cout<<"Insert "<<endl; 
+    insert(a, size, item);
+    display(a, size);
 
     return 0; 
-
 }
