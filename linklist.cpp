@@ -17,7 +17,23 @@ class linklist{
     void insertbeg(int data);
     void insertend(int data);
     void display();
+    void search(int data);
 };  
+
+void linklist::search(int data){
+
+    node* temp = head;
+    while(temp!=NULL){
+        if(temp->data == data){
+            cout<<"Match found";
+            return;
+        }
+        temp = temp ->next;
+    }
+    cout<<"No match found" <<endl;
+    return;
+
+}
 
 void linklist::display(){
     node* temp = head;
@@ -55,5 +71,8 @@ int main()
     a.insertend(4);
     a.insertbeg(2);
     a.display();
+    a.search(4);
+    a.search(2);
+    a.search(5);
     return 1; 
 }
