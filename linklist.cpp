@@ -14,12 +14,31 @@ class linklist{
         head = NULL;
     }
 
+    void del(int data);
     void insertbeg(int data);
     void insertend(int data);
     void display();
     void search(int data);
 };  
 
+void linklist::del(int data){
+    node* temp = head;
+    node* prev= NULL;
+    node* succ= temp->next;
+
+    while(temp!=NULL)
+        {
+            if(temp->data == data)
+                {
+                    prev->next = succ;
+                    delete(temp);
+                    return;
+                }
+        prev = temp;
+        temp = temp-> next;
+        succ = temp->next;
+        }
+}
 void linklist::search(int data){
 
     node* temp = head;
@@ -71,8 +90,10 @@ int main()
     a.insertend(4);
     a.insertbeg(2);
     a.display();
-    a.search(4);
-    a.search(2);
-    a.search(5);
+    cout<<endl;
+
+    a.del(4);
+    a.display();
+
     return 1; 
 }
