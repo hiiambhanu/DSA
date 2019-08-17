@@ -91,6 +91,19 @@ void insert(int a[], int &size, int item){
     return;
 }
 
+void del(int a[], int &size, int item){
+    int pos;
+    for(int i =0;i<size;i++)
+        if(a[i]==item)
+            pos = i;
+    
+    for(int i = pos; i<size-1;i++)
+    {
+        a[i]= a[i+1];
+    }
+    size--; 
+}
+
 void display(int a[], int size){
     for(int i = 0 ;i < size; i++)
         cout<<a[i]<<endl;
@@ -104,11 +117,11 @@ int main()
     for(int i = 0;i < size; i++)
         cin>>a[i];
     
-    cout<<"Enter the item to insert ";
+    cout<<"Enter the item to delete ";
     int item;
     cin>>item;
     cout<<"Insert "<<endl; 
-    insert(a, size, item);
+    del(a, size, item);
     display(a, size);
 
     return 0; 
