@@ -56,7 +56,7 @@ int main(){
     a.peek();
     a.pop();
     a.pop();
-        a.pop();
+    a.pop();
 
 
 

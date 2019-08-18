@@ -8,6 +8,21 @@ void swap(int &a, int&b){
     b = temp;
 }
 
+void selsort(int a[], int size){
+
+    int small;
+
+    for(int i = 0 ; i < size-1; i++){
+        small=i;
+        for(int j = i+1 ; j<size; j++){
+            if(a[small]>a[j])  
+                small = j;
+        }
+
+    swap(a[i], a[small]);
+    }
+}
+
 void lsearch(int a[], int size, int item){
     for(int i = 0 ;i < size; i++)
         if(a[i]==item){
@@ -105,6 +120,7 @@ void del(int a[], int &size, int item){
 }
 
 void display(int a[], int size){
+    cout<<"The array is ";
     for(int i = 0 ;i < size; i++)
         cout<<a[i]<<endl;
 }
@@ -117,11 +133,7 @@ int main()
     for(int i = 0;i < size; i++)
         cin>>a[i];
     
-    cout<<"Enter the item to delete ";
-    int item;
-    cin>>item;
-    cout<<"Insert "<<endl; 
-    del(a, size, item);
+    selsort(a, size);
     display(a, size);
 
     return 0; 
