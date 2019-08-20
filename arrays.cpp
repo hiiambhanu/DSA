@@ -67,6 +67,21 @@ void bsort(int a[], int size)
     }
 }
 
+void insort(int a[], int size){
+    int temp, j; 
+    for(int i = 1; i < size; i++)
+    {       
+        temp = a[i];                                        // 2 1 3 4 5    temp = 1; 
+        j = i-1;
+        
+        while(j>=0 && temp <a[j]){
+            a[j+1] = a[j];
+            j--;
+        }
+        a[j+1]=temp; 
+    }
+}
+
 void insert(int a[], int &size, int item){
     int pos;
     if(a[0]>item){
@@ -133,7 +148,7 @@ int main()
     for(int i = 0;i < size; i++)
         cin>>a[i];
     
-    selsort(a, size);
+    insort(a, size);
     display(a, size);
 
     return 0; 
