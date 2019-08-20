@@ -155,6 +155,32 @@ void mergesort(int a[], int size){
     merge(left, mid, right, size-mid, a, size);
 }
 
+int partition(int a[], int start, int end){
+
+    int pivot = a[end];
+    int i, p_index;
+    i = p_index = start;
+
+    for( i = 0 ; i < end ; i++ ){
+        if(a[i]<=pivot)
+            {
+                swap(a[i], a[p_index]);
+                p_index++;
+            }
+    }
+    swap(a[p_index], a[end]);
+
+    return p_index;
+}
+
+void quicksort(int a[], int start, int end){
+    if(start>=end)
+        return;
+    int p_index = partition(a, start, end);
+    quicksort(a, start, p_index-1);
+    quicksort(a, p_index+1, end);
+}
+
 void insert(int a[], int &size, int item)
 {
     int pos;
@@ -229,13 +255,7 @@ int main()
     for (int i = 0; i < size; i++)
         cin >> a[i];
 
-    // int x[10];
-    // int y[] = {1,3,5,7,9};
-    // int z[] = {2,4,6,8,10};
-    
-    // merge(y, 5, z,5, x, 10);
-    // display(x, 10 );
-    mergesort(a, size);
+    quicksort(a,0, size);
     display(a, size);
 
     return 0;
