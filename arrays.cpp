@@ -9,23 +9,7 @@ void swap(int &a, int &b)
     b = temp;
 }
 
-void selsort(int a[], int size)
-{
-
-    int small;
-
-    for (int i = 0; i < size - 1; i++)
-    {
-        small = i;
-        for (int j = i + 1; j < size; j++)
-        {
-            if (a[small] > a[j])
-                small = j;
-        }
-
-        swap(a[i], a[small]);
-    }
-}
+//////////////////////////SEARCHES////////////////////////////////
 
 void lsearch(int a[], int size, int item)
 {
@@ -68,6 +52,27 @@ void bsearch(int a[], int size, int item)
     cout << "Item not found";
     return;
 }
+
+////////////////////SORTS///////////////////////
+
+void selsort(int a[], int size)
+{
+
+    int small;
+
+    for (int i = 0; i < size - 1; i++)
+    {
+        small = i;
+        for (int j = i + 1; j < size; j++)
+        {
+            if (a[small] > a[j])
+                small = j;
+        }
+
+        swap(a[i], a[small]);
+    }
+}
+
 
 void bsort(int a[], int size)
 {
@@ -181,6 +186,10 @@ void quicksort(int a[], int start, int end){
     quicksort(a, p_index+1, end);
 }
 
+
+///////////////////////////////////MISC////////////////////////////////////
+
+
 void insert(int a[], int &size, int item)
 {
     int pos;
@@ -246,6 +255,9 @@ void display(int a[], int size)
     for (int i = 0; i < size; i++)
         cout << a[i] << endl;
 }
+
+
+
 int main()
  {
     int a[100], size;
